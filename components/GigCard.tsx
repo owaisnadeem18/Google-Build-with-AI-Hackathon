@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Star, MapPin, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface GigCardProps {
   gig: {
@@ -29,6 +30,11 @@ interface GigCardProps {
 
 export default function GigCard({ gig }: GigCardProps) {
   const { t } = useLanguage();
+  const router = useRouter();
+
+  const handleChat = () => {
+    router.push(`/chat/${gig.id}`);
+  };
 
   return (
     <Card className="group hover:shadow-lg transition-all duration-200 overflow-hidden">
@@ -46,7 +52,7 @@ export default function GigCard({ gig }: GigCardProps) {
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-2">
           <h3 className="font-semibold text-lg line-clamp-2 flex-1">{gig.title}</h3>
@@ -56,9 +62,9 @@ export default function GigCard({ gig }: GigCardProps) {
             <span className="text-sm text-gray-500">({gig.reviewCount})</span>
           </div>
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{gig.description}</p>
-        
+
         <div className="flex items-center space-x-2 mb-3">
           <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 flex items-center justify-center">
             <span className="text-white text-xs font-semibold">
@@ -73,7 +79,7 @@ export default function GigCard({ gig }: GigCardProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-wrap gap-1 mb-3">
           {gig.skills.slice(0, 3).map((skill, index) => (
             <Badge key={index} variant="outline" className="text-xs">
@@ -87,14 +93,14 @@ export default function GigCard({ gig }: GigCardProps) {
           )}
         </div>
       </CardContent>
-      
+
       <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <div className="flex items-baseline space-x-1">
           <span className="text-sm text-gray-500">Starting at</span>
           <span className="text-lg font-bold text-green-600">₨{gig.price}</span>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="flex items-center space-x-1">
+          <Button variant="outline" size="sm" className="flex items-center space-x-1" onClick={handleChat}>
             <MessageSquare className="w-4 h-4" />
             <span>Chat</span>
           </Button>

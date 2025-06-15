@@ -45,31 +45,47 @@ export default function CreateGig() {
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!user || user.userType !== 'freelancer') {
-      toast.error('Only freelancers can create gigs');
-      return;
-    }
+  e.preventDefault();
 
-    if (formData.skills.length === 0) {
-      toast.error('Please add at least one skill');
-      return;
-    }
+  if (!user || user.userType !== 'freelancer') {
+    toast.error('Only freelancers can create gigs');
+    return;
+  }
 
-    setLoading(true);
+  if (formData.skills.length === 0) {
+    toast.error('Please add at least one skill');
+    return;
+  }
 
-    try {
-      // In a real app, this would call your API
-      console.log('Creating gig:', formData);
+  setLoading(true);
+
+  try {
+    const response = await fetch('/api/gigs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+        userId: user.id, // Add user reference if needed
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
       toast.success('Gig created successfully!');
-      router.push('/profile');
-    } catch (error) {
-      toast.error('Failed to create gig');
-    } finally {
-      setLoading(false);
+      router.push('/browse-gigs');
+    } else {
+      toast.error(data.error || 'Failed to create gig');
     }
-  };
+  } catch (error) {
+    toast.error('Failed to create gig');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
