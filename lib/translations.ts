@@ -67,6 +67,8 @@ export const translations = {
     success: "Success",
     error: "Error",
 
+    hunarBazar: "Hunar Bazar",
+
     // Chat
     sendMessage: "Send Message",
     typeMessage: "Type your message...",
@@ -101,6 +103,9 @@ export const translations = {
     signup: "سائن اپ",
     logout: "لاگ آؤٹ",
 
+    hunarBazar: "ہنر بازار",
+
+
     // Home page
     heroTitle: "ہنر مند خواتین کاریگروں سے جڑیں",
     heroSubtitle:
@@ -121,7 +126,7 @@ export const translations = {
     orderNow: "آرڈر کریں",
     contactFreelancer: "فری لانسر سے رابطہ کریں",
 
-
+    hunarBazar: 
 
     // Categories
     stitching: "سلائی",
