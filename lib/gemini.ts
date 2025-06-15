@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY!);
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY! || "AIzaSyDFkl4F80T28mvN_Hwrue2ZR4CSslTtXyU");
 
-export const geminiModel = genAI.getGenerativeModel({ model: process.env.NEXT_PUBLIC_GEMINI_MODEL! });
+export const geminiModel = genAI.getGenerativeModel({ model: process.env.NEXT_PUBLIC_GEMINI_MODEL! || "gemini-2.0-flash" });
 
 export async function generateGigDescription(title: string, skills: string[]) {
   try {
