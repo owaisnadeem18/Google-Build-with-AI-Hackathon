@@ -9,15 +9,36 @@ export const translations = {
     login: 'Login',
     signup: 'Sign Up',
     logout: 'Logout',
-    
+    hunarBazar: 'Hunar Bazar', // ✅ Added
+
+     mockGigs: [
+    {
+      title: "Custom Bridal Dress Stitching",
+      description: "Expert bridal dress designing and stitching with traditional embroidery work",
+      skills: ["Bridal Wear", "Embroidery", "Custom Fitting"]
+    },
+    {
+      title: "Traditional Phulkari Embroidery",
+      description: "Authentic Punjabi phulkari embroidery on dupattas and suits",
+      skills: ["Phulkari", "Traditional Embroidery", "Dupatta Design"]
+    },
+    {
+      title: "Professional Suit Tailoring",
+      description: "Perfect fit suits for women with modern cuts and traditional touches",
+      skills: ["Suit Tailoring", "Custom Fitting", "Modern Cuts"]
+    }
+  ],
+
+
     // Home page
     heroTitle: 'Connect with Skilled Female Artisans',
     heroSubtitle: 'Discover talented women offering traditional crafts, stitching, embroidery, and tailoring services',
     getStarted: 'Get Started',
     joinAsFreelancer: 'Join as Freelancer',
     featuredGigs: 'Featured Gigs',
+    popularCategories: 'Popular Categories',
     howItWorks: 'How It Works',
-    
+
     // Gig related
     gigTitle: 'Gig Title',
     gigDescription: 'Description',
@@ -28,14 +49,14 @@ export const translations = {
     viewGig: 'View Gig',
     orderNow: 'Order Now',
     contactFreelancer: 'Contact Freelancer',
-    
+
     // Categories
     stitching: 'Stitching',
     embroidery: 'Embroidery',
     tailoring: 'Tailoring',
     designing: 'Designing',
     alterations: 'Alterations',
-    
+
     // Auth
     email: 'Email',
     password: 'Password',
@@ -45,7 +66,7 @@ export const translations = {
     iAmA: 'I am a',
     freelancer: 'Freelancer',
     client: 'Client',
-    
+
     // Common
     save: 'Save',
     cancel: 'Cancel',
@@ -55,7 +76,7 @@ export const translations = {
     loading: 'Loading...',
     success: 'Success',
     error: 'Error',
-    
+
     // Chat
     sendMessage: 'Send Message',
     typeMessage: 'Type your message...',
@@ -63,6 +84,23 @@ export const translations = {
     offline: 'Offline',
   },
   ur: {
+     mockGigs: [
+    {
+      title: "حسبِ منشاء دلہن کا لباس سلائی",
+      description: "روایتی کڑھائی کے ساتھ ماہر دلہن کے لباس کا ڈیزائن اور سلائی",
+      skills: ["دلہن کا لباس", "کڑھائی", "مطابق ناپ سلائی"]
+    },
+    {
+      title: "روایتی پھلکاری کڑھائی",
+      description: "پھلکاری کڑھائی والی دوپٹے اور سوٹ، پنجابی ثقافت کی نمائندگی",
+      skills: ["پھلکاری", "روایتی کڑھائی", "دوپٹے کا ڈیزائن"]
+    },
+    {
+      title: "پروفیشنل سوٹ سلائی",
+      description: "خواتین کے لیے جدید اور روایتی انداز میں مکمل ناپ کے سوٹ",
+      skills: ["سوٹ سلائی", "مطابق ناپ سلائی", "جدید انداز"]
+    }
+  ],
     // Navigation
     home: 'گھر',
     browseGigs: 'گگز دیکھیں',
@@ -72,15 +110,17 @@ export const translations = {
     login: 'لاگ ان',
     signup: 'سائن اپ',
     logout: 'لاگ آؤٹ',
-    
+    hunarBazar: 'ہنر بازار', // ✅ Added
+
     // Home page
     heroTitle: 'ہنر مند خواتین کاریگروں سے جڑیں',
     heroSubtitle: 'روایتی دستکاری، سلائی، کڑھائی، اور درزی کی خدمات فراہم کرنے والی باصلاحیت خواتین کو دریافت کریں',
     getStarted: 'شروع کریں',
     joinAsFreelancer: 'فری لانسر کے طور پر شامل ہوں',
     featuredGigs: 'نمایاں گگز',
+    popularCategories: 'مقبول اقسام ',
     howItWorks: 'یہ کیسے کام کرتا ہے',
-    
+
     // Gig related
     gigTitle: 'گگ کا عنوان',
     gigDescription: 'تفصیل',
@@ -91,14 +131,14 @@ export const translations = {
     viewGig: 'گگ دیکھیں',
     orderNow: 'آرڈر کریں',
     contactFreelancer: 'فری لانسر سے رابطہ کریں',
-    
+
     // Categories
     stitching: 'سلائی',
     embroidery: 'کڑھائی',
     tailoring: 'درزی',
     designing: 'ڈیزائننگ',
     alterations: 'تبدیلی',
-    
+
     // Auth
     email: 'ای میل',
     password: 'پاس ورڈ',
@@ -108,7 +148,7 @@ export const translations = {
     iAmA: 'میں ہوں',
     freelancer: 'فری لانسر',
     client: 'کلائنٹ',
-    
+
     // Common
     save: 'محفوظ کریں',
     cancel: 'منسوخ',
@@ -118,14 +158,15 @@ export const translations = {
     loading: 'لوڈ ہو رہا ہے...',
     success: 'کامیابی',
     error: 'خرابی',
-    
+
     // Chat
     sendMessage: 'پیغام بھیجیں',
     typeMessage: 'اپنا پیغام ٹائپ کریں...',
     online: 'آن لائن',
     offline: 'آف لائن',
-  }
+  },
 };
+
 
 export type Language = 'en' | 'ur';
 export type TranslationKey = keyof typeof translations.en;
