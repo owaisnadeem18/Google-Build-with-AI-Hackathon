@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { Languages, User, MessageSquare, Plus, Home, Search } from 'lucide-react';
+import { Languages, User, MessageSquare, Plus, Home, Search, Menu } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +16,9 @@ import {
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const { user, logout } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
@@ -29,32 +32,39 @@ export default function Navbar() {
             <span className="text-xl font-bold text-gray-900">Hunar Bazar</span>
           </Link>
 
-          {/* Navigation Links */}
+          {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors">
+            <Link href="/" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600">
               <Home className="w-4 h-4" />
               <span>{t('home')}</span>
             </Link>
-            <Link href="/browse" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors">
+            <Link href="/browse" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600">
               <Search className="w-4 h-4" />
               <span>{t('browseGigs')}</span>
             </Link>
             {user?.userType === 'freelancer' && (
-              <Link href="/create-gig" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors">
+              <Link href="/create-gig" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600">
                 <Plus className="w-4 h-4" />
                 <span>{t('createGig')}</span>
               </Link>
             )}
             {user && (
-              <Link href="/messages" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors">
+              <Link href="/messages" className="flex items-center space-x-2 text-gray-700 hover:text-pink-600">
                 <MessageSquare className="w-4 h-4" />
                 <span>{t('messages')}</span>
               </Link>
             )}
           </div>
 
-          {/* Right side actions */}
-          <div className="flex items-center space-x-4">
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <Button variant="ghost" size="icon" onClick={toggleMobileMenu}>
+              <Menu className="w-6 h-6" />
+            </Button>
+          </div>
+
+          {/* Right Side Actions */}
+          <div className="hidden md:flex items-center space-x-4">
             {/* Language Toggle */}
             <Button
               variant="outline"
@@ -96,6 +106,62 @@ export default function Navbar() {
             )}
           </div>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-2 space-y-2">
+            <Link href="/" className="block text-gray-700 hover:text-pink-600">
+              {t('home')}
+            </Link>
+            <Link href="/browse" className="block text-gray-700 hover:text-pink-600">
+              {t('browseGigs')}
+            </Link>
+            {user?.userType === 'freelancer' && (
+              <Link href="/create-gig" className="block text-gray-700 hover:text-pink-600">
+                {t('createGig')}
+              </Link>
+            )}
+            {user && (
+              <Link href="/messages" className="block text-gray-700 hover:text-pink-600">
+                {t('messages')}
+              </Link>
+            )}
+            <div className="pt-2 border-t">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
+                className="w-full flex justify-start space-x-2"
+              >
+                <Languages className="w-4 h-4" />
+                <span>{language === 'en' ? 'اردو' : 'English'}</span>
+              </Button>
+              {user ? (
+                <>
+                  <Link href="/profile" className="block mt-2 text-gray-700 hover:text-pink-600">
+                    {t('profile')}
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    className="mt-2 text-left w-full text-red-600"
+                    onClick={logout}
+                  >
+                    {t('logout')}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" className="block mt-2 text-gray-700 hover:text-pink-600">
+                    {t('login')}
+                  </Link>
+                  <Link href="/signup" className="block mt-1 text-gray-700 hover:text-pink-600">
+                    {t('signup')}
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
