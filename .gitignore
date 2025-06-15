@@ -27,6 +27,8 @@ yarn-error.log*
 # local env files
 .env
 .env*.local
+.NEXT_PUBLIC_API_KEY
+.process.env
 
 # vercel
 .vercel
