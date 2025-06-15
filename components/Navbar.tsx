@@ -29,7 +29,9 @@ export default function Navbar() {
             <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">ہ</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Hunar Bazar</span>
+           <span className="text-xl font-bold text-gray-900">
+              {t('hunarBazar')}       
+            </span>
           </Link>
 
           {/* Desktop Links */}
