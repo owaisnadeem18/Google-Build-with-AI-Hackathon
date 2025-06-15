@@ -126,8 +126,6 @@ export const translations = {
     orderNow: "آرڈر کریں",
     contactFreelancer: "فری لانسر سے رابطہ کریں",
 
-    hunarBazar: 
-
     // Categories
     stitching: "سلائی",
     embroidery: "کڑھائی",
